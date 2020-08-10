@@ -51,7 +51,7 @@ glDrawArrays( GL_TRIANGLES, 0, 3 );
 
 This draw a triangle that looks like the following:
 
-![glScreenSpaceTriangle](/assets/img/gl_screen_space_triangle.png)
+![glScreenSpaceTriangle](/assets/img/gl_screen_space_triangle.png){:height="100%" width="100%"}
 
 It's surprising how often this comes in handy, in a later post I'll describe how to adapt this trick to efficiently access the elements of a 3D texture.  It also amuses me greatly that Iñigo Quilez's amazing demo/presentation "Rendering World's With Two Triangles" could actually be renamed "Renderings Worlds With One Triangle."
 
