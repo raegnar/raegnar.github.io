@@ -4,7 +4,7 @@ title: Rendering a Screen Covering Triangle in OpenGL (with no buffers)
 # subtitle: Each post also has a subtitle
 #gh-repo: daattali/beautiful-jekyll
 #gh-badge: [star, fork, follow]
-tags: [test]
+tags: [OpenGL]
 comments: true
 ---
 
@@ -12,14 +12,14 @@ This one has been on the backlog for ages now.  Anyway, this is an OpenGL adapt
 
 It describes a method for rendering a triangle that covers the screen with no buffer inputs.  All vertex and texture coordinate information are generated solely from the vertexID.  Unfortunately, because OpenGL uses a right-handed coordinate system while DirectX uses a left-handed coordinate system the same vertexID transformation used for DirectX won't work in OpenGL.  Basically, we need to reverse the order of the triangle vertices so that they are traversed counter-clockwise as opposed to clockwise in the original implementation. So, after a bit of experimentation I came up with the following adaptation for OpenGL:
 
-```glsl
+{% highlight glsl linenos %}
 void main()
 {
   float x = -1.0 + float((gl_VertexID & 1) << 2);
   float y = -1.0 + float((gl_VertexID & 2) << 1);
   gl_Position = vec4(x, y, 0, 1); 
 }
-```
+{% endhighlight %}
 
 This transforms the `gl_VertexID` as follows:
 
