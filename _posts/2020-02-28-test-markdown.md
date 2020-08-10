@@ -1,78 +1,57 @@
 ---
 layout: post
-title: Sample blog post
-subtitle: Each post also has a subtitle
+title: Rendering a Screen Covering Triangle in OpenGL (with no buffers)
+# subtitle: Each post also has a subtitle
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
 tags: [test]
 comments: true
 ---
 
-This is a demo post to show you how to write blog posts with markdown.  I strongly encourage you to [take 5 minutes to learn how to write in markdown](https://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
+This one has been on the backlog for ages now.  Anyway, this is an OpenGL adaptation of a clever trick that's been around for quite awhile and described in DirectX terms by Cort Stratton ([@postgoodism](http://www.twitter.com/postgoodism)) in the "[An interesting vertex shader trick](https://web.archive.org/web/20140719063725/http://www.altdev.co/2011/08/08/interesting-vertex-shader-trick/)" on [#AltDevBlogADay](http://www.altdev.co/).
 
-**Here is some bold text**
+It describes a method for rendering a triangle that covers the screen with no buffer inputs.  All vertex and texture coordinate information are generated solely from the vertexID.  Unfortunately, because OpenGL uses a right-handed coordinate system while DirectX uses a left-handed coordinate system the same vertexID transformation used for DirectX won't work in OpenGL.  Basically, we need to reverse the order of the triangle vertices so that they are traversed counter-clockwise as opposed to clockwise in the original implementation. So, after a bit of experimentation I came up with the following adaptation for OpenGL:
 
-## Here is a secondary heading
-
-Here's a useless table:
-
-| Number | Next number | Previous number |
-| :------ |:--- | :--- |
-| Five | Six | Four |
-| Ten | Eleven | Nine |
-| Seven | Eight | Six |
-| Two | Three | One |
-
-
-How about a yummy crepe?
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
-
-It can also be centered!
-
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .mx-auto.d-block :}
-
-Here's a code chunk:
-
-~~~
-var foo = function(x) {
-  return(x + 5);
+```glsl
+void main()
+{
+  float x = -1.0 + float((gl_VertexID & 1) << 2);
+  float y = -1.0 + float((gl_VertexID & 2) << 1);
+  gl_Position = vec4(x, y, 0, 1); 
 }
-foo(3)
-~~~
-
-And here is the same code with syntax highlighting:
-
-```javascript
-var foo = function(x) {
-  return(x + 5);
-}
-foo(3)
 ```
 
-And here is the same code yet again but with line numbers:
+This transforms the `gl_VertexID` as follows:
 
-{% highlight javascript linenos %}
-var foo = function(x) {
-  return(x + 5);
+```glsl
+gl_VertexID=0 -> (-1,-1)
+gl_VertexID=1 -> ( 3,-1)
+gl_VertexID=2 -> (-1, 3)
+```
+
+We can easily add texture coordinates to this as well:
+
+{% highlight glsl linenos %}
+out vec2 texCoord;
+void main()
+{
+  float x = -1.0 + float((gl_VertexID & 1) << 2);
+  float y = -1.0 + float((gl_VertexID & 2) << 1);
+  texCoord.x = (x+1.0)*0.5;
+  texCoord.y = (y+1.0)*0.5;
+  gl_Position = vec4(x, y, 0, 1);
 }
-foo(3)
 {% endhighlight %}
 
-## Boxes
-You can add notification, warning and error boxes like this:
+Which is going to provide in that homogeneous clip space region a position value varying from -1 to 1 and texture coordinates varying from 0 to 1 exactly as OpenGL would expect, all without need to any create any buffers. All you have to do is make single call to `glDrawArrays` and tell it to render 3 vertices:
 
-### Notification
+```glsl
+glDrawArrays( GL_TRIANGLES, 0, 3 );
+```
 
-{: .box-note}
-**Note:** This is a notification box.
+This draw a triangle that looks like the following:
 
-### Warning
+![glScreenSpaceTriangle](/assets/img/gl_screen_space_triangle.png)
 
-{: .box-warning}
-**Warning:** This is a warning box.
+It's surprising how often this comes in handy, in a later post I'll describe how to adapt this trick to efficiently access the elements of a 3D texture.  It also amuses me greatly that Iñigo Quilez's amazing demo/presentation "Rendering World's With Two Triangles" could actually be renamed "Renderings Worlds With One Triangle."
 
-### Error
-
-{: .box-error}
-**Error:** This is an error box.
