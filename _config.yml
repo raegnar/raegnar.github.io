@@ -12,8 +12,8 @@ author: Randall Rauwendaal
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "_pages/aboutme"
-  Resume: "_pages/resume"
+  About Me: "pages/aboutme"
+  Resume: "pages/resume"
   Resources:
     - Beautiful Jekyll: "https://beautifuljekyll.com"
     - Learn markdown: "https://www.markdowntutorial.com/"
