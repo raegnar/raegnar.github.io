@@ -12,7 +12,7 @@ This is the promised follow-up to [Rendering a Screen Covering Triangle in OpenG
 
 The vertex shader looks the same as before with the addition of the ```instanceID```.
 
-{% highlight glsl linenos %}
+~~~glsl
 flat out int instanceID;
  
 void main()
@@ -22,12 +22,11 @@ void main()
     instanceID  = gl_InstanceID;
     gl_Position = vec4(x, y, 0, 1);
 }
-{% endhighlight %}
-
+~~~
 
 The fragment shader can then recover the voxel coordinates from ```gl_FragCoord``` and the ```instanceID```.
 
-{% highlight glsl linenos %}
+~~~glsl
 flat in int instanceID;
  
 void main()
@@ -35,18 +34,18 @@ void main()
     ivec3 voxelCoord = ivec3(gl_FragCoord.xy, instanceID);
     voxelOperation(voxelCoord);
 }
-{% endhighlight %}
+~~~
 
 Very similar to drawing the single screen covering triangle, we set our viewport to the XY-dimensions of the volume, bind a junk VAO to make certain graphics drivers happy, and call ```glDrawArraysInstanced``` with the Z-dimension of the volume, so that we draw a triangle per-slice of the volume.
 
-{% highlight glsl linenos %}
+~~~glsl
 glViewport(0, 0, width, height);
 glBindVertexArray(junkVAO);
 glDrawArraysInstanced(GL_TRIANGLE_STRIP, 0, 3, depth);
-{% endhighlight %}
+~~~
 
 Which would look sort of like the following:
 
-![glScreenSpaceTriangle](/assets/img/volumefillingtriangles.png){:height="100%" width="100%"}
+![glScreenSpaceTriangle](/assets/img/volumefillingtriangles.png){:height="50%" width="50%"}
 
 This can be useful for quickly processing a volume. Initially, I used this as an OpenGL 4.2 fallback (instead of compute shaders) so that I could still use the NSight debugger, until I realized this approach was actually outperforming the compute shader. Of course, when to use compute shaders, and how to use them effectively deserves a post of its own.
