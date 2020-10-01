@@ -22,7 +22,7 @@ url: 'https://raegnar.github.io'
 
 author: Randall Rauwendaal              # change to your full name
 
-avatar: /assets/img/sample/avatar.jpg   # support internet resources
+avatar: /assets/img/profile.jpg   # support internet resources
 
 github:
   username: github_username             # change to your github username
@@ -48,7 +48,7 @@ google_site_verification: google_meta_tag_verification # change to your verifica
 
 # Only if your site type is GitHub Project sites and doesn't have a custom domain,
 # change below value to '/projectname'.
-baseurl: ''
+baseurl: '/raegnar.github.io'
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: America/Los_Angeles
