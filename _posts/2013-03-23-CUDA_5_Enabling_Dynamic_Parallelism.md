@@ -3,7 +3,6 @@ layout: post
 title: "CUDA 5: Enabling Dynamic Parallelism"
 date: 2013-03-23 11:16
 comments: true
-categories: [CUDA, Dynamic Parallelism]
 tags: [CUDA, Dynamic Parallelism]
 ---
 

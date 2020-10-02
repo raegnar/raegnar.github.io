@@ -3,7 +3,6 @@ layout: post
 title: OpenCV and OpenCL
 date: 2011-02-10 2:13
 comments: true
-categories: [OpenGL, OpenCV]
 tags: [OpenGL, OpenCV]
 ---
 

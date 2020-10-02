@@ -2,7 +2,6 @@
 layout: post
 title: "Rendering a Screen Covering Triangle in OpenGL (with no buffers)"
 comments: true
-categories: [OpenGL]
 tags: [OpenGL]
 ---
 

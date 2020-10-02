@@ -3,7 +3,6 @@ layout: post
 title: "How to use CUDA 3.0's new Graphics Interoperability API with OpenGL"
 date: 2011-02-10 16:13
 comments: true
-categories: [CUDA, OpenGL]
 tags: [CUDA, OpenGL]
 ---
 It always bothered me that whenever I took a look at using CUDA in my graphics applications there didn't seem to be an elegant way to use textures from OpenGL with CUDA without doing potentially expensive copies. But that is finally no longer necessary with CUDA 3.0's new graphics interoperability API.

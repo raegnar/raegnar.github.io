@@ -3,7 +3,6 @@ layout: post
 title: CUDA 5 and OpenGL Interop and Dynamic Parallelism
 date: 2013-04-03 17:42
 comments: true
-categories: [CUDA, Dynamic Parallelism, OpenGL]
 tags: [CUDA, Dynamic Parallelism, OpenGL]
 ---
 

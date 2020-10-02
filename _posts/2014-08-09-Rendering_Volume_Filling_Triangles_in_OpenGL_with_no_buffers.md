@@ -2,7 +2,6 @@
 layout: post
 title: "Rendering Volume Filling Triangles in OpenGL (with no buffers)"
 comments: true
-categories: [OpenGL]
 tags: [OpenGL]
 ---
 

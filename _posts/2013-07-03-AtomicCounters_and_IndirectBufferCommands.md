@@ -3,7 +3,6 @@ layout: post
 title: "AtomicCounters & IndirectBufferCommands"
 date: 2013-07-03 10:27
 comments: true
-categories: [OpenGL, GLSL]
 tags: [OpenGL, GLSL]
 ---
 

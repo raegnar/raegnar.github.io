@@ -3,7 +3,6 @@ layout: post
 title: "GLSL Snippet: emulating running atomic average of colors using imageAtomicCompSwap"
 date: 2013-02-07 12:12
 comments: true
-categories: [GLSL, OpenGL]
 tags: [GLSL, OpenGL]
 ---
 

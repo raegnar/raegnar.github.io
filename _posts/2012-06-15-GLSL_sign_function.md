@@ -3,7 +3,6 @@ layout: post
 title: "GLSL sign function"
 date: 2012-06-15 15:26
 comments: true
-categories: [GLSL]
 tags: [GLSL]
 ---
 

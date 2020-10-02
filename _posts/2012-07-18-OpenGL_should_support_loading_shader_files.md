@@ -3,7 +3,6 @@ layout: post
 title: "OpenGL should support loading shader files"
 date: 2012-07-18 15:00
 comments: true
-categories: [GLSL, OpenGL]
 tags: [GLSL, OpenGL]
 ---
 
