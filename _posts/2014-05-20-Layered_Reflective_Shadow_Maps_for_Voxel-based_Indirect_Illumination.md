@@ -4,6 +4,7 @@ title: Layered Reflective Shadow Maps for Voxel-based Indirect Illumination
 # subtitle: Each post also has a subtitle
 #gh-repo: daattali/beautiful-jekyll
 #gh-badge: [star, fork, follow]
+categories: [Research]
 tags: [Research]
 comments: true
 ---
