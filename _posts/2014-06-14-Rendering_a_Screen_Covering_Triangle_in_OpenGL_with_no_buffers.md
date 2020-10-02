@@ -1,11 +1,9 @@
 ---
 layout: post
-title: Rendering a Screen Covering Triangle in OpenGL (with no buffers)
-# subtitle: Each post also has a subtitle
-#gh-repo: daattali/beautiful-jekyll
-#gh-badge: [star, fork, follow]
-tags: [OpenGL]
+title: "Rendering a Screen Covering Triangle in OpenGL (with no buffers)"
 comments: true
+categories: [OpenGL]
+tags: [OpenGL]
 ---
 
 This one has been on the backlog for ages now.  Anyway, this is an OpenGL adaptation of a clever trick that's been around for quite awhile and described in DirectX terms by Cort Stratton ([@postgoodism](http://www.twitter.com/postgoodism)) in the "[An interesting vertex shader trick](https://web.archive.org/web/20140719063725/http://www.altdev.co/2011/08/08/interesting-vertex-shader-trick/)" on [#AltDevBlogADay](http://www.altdev.co/).

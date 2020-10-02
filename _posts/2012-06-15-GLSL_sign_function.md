@@ -2,11 +2,11 @@
 layout: post
 title: "GLSL sign function"
 date: 2012-06-15 15:26
-author: randallr
 comments: true
 categories: [GLSL]
 tags: [GLSL]
 ---
+
 The GLSL `sign` function always seems a great way to remove some unnecessary if statements from my shaders, but I never seem to get to use it because I always need to consider zero as either positive or negative, and not its own special value.
 
 Anyway, I just realized you can accomplish the same thing with the `step` function.

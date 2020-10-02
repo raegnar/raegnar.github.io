@@ -2,9 +2,9 @@
 layout: post
 title: Writing to 3D OpenGL textures in CUDA 4.1 with 3D surface writes
 date: 2011-12-02 12:31
-author: randallr
 comments: true
 categories: [CUDA, OpenGL]
+tags: [CUDA, OpenGL]
 ---
 **Edit:** For how this works in CUDA 5 see my new post <a href="http://rauwendaal.net/2013/04/03/cuda-5-and-opengl-interop/" title="CUDA 5 and OpenGL Interop and Dynamic Parallelism">CUDA 5 and OpenGL Interop and Dynamic Parallelism</a>.
 

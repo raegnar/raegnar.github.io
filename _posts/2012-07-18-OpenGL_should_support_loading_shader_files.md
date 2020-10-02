@@ -2,11 +2,11 @@
 layout: post
 title: "OpenGL should support loading shader files"
 date: 2012-07-18 15:00
-author: randallr
 comments: true
 categories: [GLSL, OpenGL]
 tags: [GLSL, OpenGL]
 ---
+
 OpenGL's shader system is purely string based. Just pass it a couple of strings worth of shader code, compile, link, and go.
 
 Its not actually that bad, but it gets progressively more annoying the more advanced your shader code gets. It precludes the convenient use of <code>#include</code>, because OpenGL has no idea where that string came from (which directory/file). All the sudden you find yourself terribly missing the ability to factor out some useful utility code into a header file, and just <code>#include</code> it wherever you need it.

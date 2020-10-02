@@ -2,14 +2,13 @@
 layout: post
 title: "How to use CUDA 3.0's new Graphics Interoperability API with OpenGL"
 date: 2011-02-10 16:13
-author: randallr
 comments: true
 categories: [CUDA, OpenGL]
 tags: [CUDA, OpenGL]
 ---
 It always bothered me that whenever I took a look at using CUDA in my graphics applications there didn't seem to be an elegant way to use textures from OpenGL with CUDA without doing potentially expensive copies. But that is finally no longer necessary with CUDA 3.0's new graphics interoperability API.
 
-The only real documentation is the online doxygen generated stuff, the best place to start is at the <a href="http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__INTEROP.html">Graphics Interoperability</a> page. Unfortunately there is no documentation for the cudaGraphicsResource struct that all these new functions seem to use.  And while there is a API agnostic <a href="http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__INTEROP_gc47f5f6144307d803da1ba3c8dc26738.html#gc47f5f6144307d803da1ba3c8dc26738">cudaGraphicsUnregisterResource</a> function, there is no function to actually register a resource unless you look in the API specific modules, which you might first assume, as I did, are deprecated, but it's only the modules that say [DEPRECATED] real big across the top that are actually deprecated, the new non-deprecated modules simply have a link to the deprecated modules.  So for OpenGL you simply have to look at the <a href="http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__OPENGL.html">OpenGL Interoperability</a> page to find the rest of the functions you'll need, there are similar pages for whatever other API you would like to use.
+The only real documentation is the online doxygen generated stuff, the best place to start is at the [Graphics Interoperability][graphicsInterop] page. Unfortunately there is no documentation for the cudaGraphicsResource struct that all these new functions seem to use.  And while there is a API agnostic [`cudaGraphicsUnregisterResource`][cudaGraphicsUnregisterResource] function, there is no function to actually register a resource unless you look in the API specific modules, which you might first assume, as I did, are deprecated, but it's only the modules that say [DEPRECATED] real big across the top that are actually deprecated, the new non-deprecated modules simply have a link to the deprecated modules.  So for OpenGL you simply have to look at the [OpenGL Interoperability][openglInterop] page to find the rest of the functions you'll need, there are similar pages for whatever other API you would like to use.
 
 So basically the process is to register a resource, generally a texture or a buffer via the `cudaGraphicsGLRegisterImage` and `cudaGraphicsGLRegisterBuffer` functions respectively. These functions assign a valid pointer to your `cudaGraphicsResource` pointer.  Then create a CUDA stream with `cudaStreamCreate`, map your graphics resource to the CUDA stream with `cudaGraphicsMapResources`, and at this pointer you can recover a pointer to your texture or buffer data in your CUDA code using the `cudaGraphicsSubResourceGetMappedArray` and `cudaGraphicsResourceGetMappedPointer` functions respectively.
 
@@ -173,3 +172,9 @@ void main()
 ~~~
 
 Of course, there is no reason to display the buffer if your just doing computations on it, and there is no reason you can't use this technique on Vertex or other buffers. And finally, I don't have much CUDA experience so I can't guarantee that I'm not doing anything suboptimal in the above code. I would also recommend wrapping all the CUDA functions `cutilSafeCall` functions.
+
+
+
+[graphicsInterop]: http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__INTEROP.html
+[cudaGraphicsUnregisterResource]: http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__INTEROP_gc47f5f6144307d803da1ba3c8dc26738.html#gc47f5f6144307d803da1ba3c8dc26738
+[openglInterop]: http://developer.download.nvidia.com/compute/cuda/3_0-Beta1/toolkit/docs/online/group__CUDART__OPENGL.html

@@ -2,7 +2,6 @@
 layout: post
 title: Fixed imageAtomicAverageRGBA8
 date: 2013-05-02 10:27
-author: randallr
 comments: true
 categories: [GLSL]
 tags: [GLSL]

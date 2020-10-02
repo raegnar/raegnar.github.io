@@ -1,10 +1,8 @@
 ---
 layout: post
 title: OpenCV and OpenCL
-# subtitle: Excerpt from Soulshaping by Jeff Brown
-# cover-img: /assets/img/path.jpg
-# thumbnail-img: /assets/img/thumb.png
-# share-img: /assets/img/path.jpg
+date: 2011-02-10 2:13
+comments: true
 categories: [OpenGL, OpenCV]
 tags: [OpenGL, OpenCV]
 ---

@@ -1,10 +1,8 @@
 ---
 layout: post
 title: "Rendering Volume Filling Triangles in OpenGL (with no buffers)"
-# subtitle: Excerpt from Soulshaping by Jeff Brown
-cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
+comments: true
+categories: [OpenGL]
 tags: [OpenGL]
 ---
 

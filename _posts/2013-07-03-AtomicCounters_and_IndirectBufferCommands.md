@@ -1,10 +1,8 @@
 ---
 layout: post
-title: AtomicCounters & IndirectBufferCommands
-# subtitle: Excerpt from Soulshaping by Jeff Brown
-cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
+title: "AtomicCounters & IndirectBufferCommands"
+date: 2013-07-03 10:27
+comments: true
 categories: [OpenGL, GLSL]
 tags: [OpenGL, GLSL]
 ---

@@ -2,7 +2,6 @@
 layout: post
 title: CUDA 5 and OpenGL Interop and Dynamic Parallelism
 date: 2013-04-03 17:42
-author: randallr
 comments: true
 categories: [CUDA, Dynamic Parallelism, OpenGL]
 tags: [CUDA, Dynamic Parallelism, OpenGL]
@@ -18,9 +17,10 @@ Unfortunately, if you try to write to a globally scoped CUDA surface from a devi
 
 I only discovered the reason when I decided to read, word for word, the <a href="http://docs.nvidia.com/cuda/pdf/CUDA_Dynamic_Parallelism_Programming_Guide.pdf">CUDA Dynamic Parallelism Programming Guide</a>. On page 14, in the "Textures & Surfaces" section is this note:
 
-> <strong>NOTE: The device runtime does not support legacy module-scope (i.e. Fermi-style) textures and surfaces within a kernel launched from the device</strong>. Module-scope (legacy) textures may be created from the host and used in device code as for any kernel, but may only be used by a top-level kernel (i.e. the one which is launched from the host).
+> **NOTE: The device runtime does not support legacy module-scope (i.e. Fermi-style) textures and surfaces within a kernel launched from the device**. Module-scope (legacy) textures may be created from the host and used in device code as for any kernel, but may only be used by a top-level kernel (i.e. the one which is launched from the host).
 
-So now the old way of dealing with textures is considered "Legacy" but apparently not quite deprecated yet.  So don't use them if you plan on using dynamic parallelism.  <strong>Additional Note:</strong> if you so much call a function that attempts to perform a "Fermi-style" surface write you're kernel will fail silently, so I highly recommend removing all "Fermi-style" textures and surfaces if you plan on using dynamic parallelism.
+So now the old way of dealing with textures is considered "Legacy" but apparently not quite deprecated yet.  So don't use them if you plan on using dynamic parallelism.
+**Additional Note:** if you so much call a function that attempts to perform a "Fermi-style" surface write you're kernel will fail silently, so I highly recommend removing all "Fermi-style" textures and surfaces if you plan on using dynamic parallelism.
 
 So what's the "New style" of textures and surfaces, well also on page 14 is a footnote saying:
 
@@ -38,7 +38,7 @@ Really, all we have to do is replace <a href="http://rauwendaal.net/2011/12/02/w
 ~~~cpp
 // Create the cuda resource description
 struct cudaResourceDesc resoureDescription;
-memset(&amp;resDesc, 0, sizeof(resoureDescription));
+memset(&resDesc, 0, sizeof(resoureDescription));
 resDesc.resType = cudaResourceTypeArray;	// be sure to set the resource type to cudaResourceTypeArray
 resDesc.res.array.array = yourCudaArray;	// this is the important bit
 
