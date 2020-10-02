@@ -7,7 +7,8 @@ comments: true
 categories: [GLSL]
 tags: [GLSL]
 ---
-So I fixed some issues I had in my previous implementation of <code>imageAtomicAverageRGBA8</code>, see the <a title="GLSL Snippet: emulating running atomic average of colors using imageAtomicCompSwap" href="http://rauwendaal.net/2013/02/07/glslrunningaverage/">previous post</a> for an explanation of what I got wrong.  Reposting the corrected code here, and sorry to anyone who was trying to use the broken version.
+
+So I fixed some issues I had in my previous implementation of <code>imageAtomicAverageRGBA8</code>, see the [previous post](/glslrunningaverage/) for an explanation of what I got wrong. Reposting the corrected code here, and sorry to anyone who was trying to use the broken version.
 
 ~~~glsl
 void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, ivec3 coord, vec3 nextVec3)
@@ -21,7 +22,7 @@ void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, iv
 	vec3 average;
 	uint count;
 
-	//&quot;Spin&quot; while threads are trying to change the voxel
+	// "Spin" while threads are trying to change the voxel
 	while((currUint = imageAtomicCompSwap(voxels, coord, prevUint, nextUint)) != prevUint)
 	{
 		prevUint = currUint;					//store packed rgb average and count
@@ -43,5 +44,5 @@ Anyway, original credit for this technique should go to Cyril Crassin, whose imp
 
 <strong>Note:</strong> I tried to debug these in the Nsight shader debugger and got the message "Not a debuggable shader", so either it doesn't support atomics (unverified), or these "spinlock" type shaders are too clever for the debugger somehow (for now).
 
-<strong>References</strong>
+### References
 [<a name="CG2"></a>Crassin & Greene] Octree-Based Sparse Voxelization Using the GPU Hardware Rasterizer <a href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf">http://www.seas.upenn.edu/%7Epcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf</a>

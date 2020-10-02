@@ -5,9 +5,13 @@ date: 2013-03-23 11:16
 author: randallr
 comments: true
 categories: [CUDA, Dynamic Parallelism]
+tags: [CUDA, Dynamic Parallelism]
 ---
+
 I finally got a GPU capable of dynamic parallelism, so I decided to mess around with CUDA 5. But I discovered a couple of configuration options that are required if you want to enable dynamic parallelism. You'll know you haven't configured things correctly if you attempt to call a kernel from the device and you get the following error message:
+
 >ptxas : fatal error : Unresolved extern function 'cudaGetParameterBuffer'
+
 Note: this assume you have already selected the appropriate CUDA 5 build customizations for your project
 
 Open the project project properties

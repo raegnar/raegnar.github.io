@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GLSL sign function
+title: "GLSL sign function"
 date: 2012-06-15 15:26
 author: randallr
 comments: true

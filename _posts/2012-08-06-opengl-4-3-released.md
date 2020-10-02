@@ -6,6 +6,7 @@ author: randallr
 comments: true
 categories: [OpenGL]
 ---
+
 OpenGL 4.3 has just been released and almost instantly <a href="http://www.g-truc.net/">G-Truc</a> (Christophe Riccio) posted another excellent of his excellent <a href="http://www.g-truc.net/doc/OpenGL4.3review.pdf">OpenGL reviews</a>.  Additionally <a href="http://web.engr.oregonstate.edu/~mjb/WebMjb/mjb.html">Mike Bailey</a> has already made available some <a href="http://web.engr.oregonstate.edu/~mjb/sig12/compute.shader.1pp.pdf">slides</a> on the new Compute shaders.  And as usual nvidia already has <a href="http://www.nvidia.com/content/devzone/opengl-driver-4.3.html">beta drivers</a> available.
 
 With over 20 new extensions this is a rather large update for a point release, and while I'm extremely grateful that people have had a chance preview these extensions and provide an alternative to the pain of reading through the extensions themselves (though I will probably do that anyway), I can't help but wish that this sort of access wasn't so exclusive.  I find the current method of dumping a bunch of new extensions out each SIGGRAPH and shouting "Surprise!" a bit jarring, and more tragically there is no mechanism to allow the OpenGL community at large to provide feedback (unless you are a member of Khronos, I guess).

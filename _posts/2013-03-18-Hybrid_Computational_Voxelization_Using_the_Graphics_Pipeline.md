@@ -5,6 +5,7 @@ date: 2013-03-18 10:58
 author: randallr
 comments: true
 categories: [Research]
+tags: [Research]
 ---
 <a href="http://randallr.files.wordpress.com/2013/03/dragonforward.png"><img alt="dragonForward" src="http://randallr.files.wordpress.com/2013/03/dragonforward.png" width="630" height="196" /></a>
 

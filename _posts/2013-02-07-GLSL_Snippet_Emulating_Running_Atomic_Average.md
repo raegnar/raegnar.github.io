@@ -5,12 +5,14 @@ date: 2013-02-07 12:12
 author: randallr
 comments: true
 categories: [GLSL, OpenGL]
+tags: [GLSL, OpenGL]
 ---
-This is basically straight out of the [<a href="#CG">Crassin &amp; Greene</a>] chapter from the excellent <a href="http://openglinsights.com/">OpenGL Insights</a> book, which calculates a running average for a RGB voxel color and stores it into a RGBA8 texture (using the alpha component as an access count).  But for whatever reason when I dropped their GLSL snippet into my code I couldn't get it to work correctly.  So, I attempted to rewrite it as simply as possible, and basically ended up with almost the same thing except I used the provided GLSL functions <code>packUnorm4x8</code> and the <code>unpackUnorm4x8</code> instead of rolling my own, so it's ever so slightly simpler.
+
+This is basically straight out of the [Crassin & Greene][CG] chapter from the excellent <a href="http://openglinsights.com/">OpenGL Insights</a> book, which calculates a running average for a RGB voxel color and stores it into a RGBA8 texture (using the alpha component as an access count).  But for whatever reason when I dropped their GLSL snippet into my code I couldn't get it to work correctly.  So, I attempted to rewrite it as simply as possible, and basically ended up with almost the same thing except I used the provided GLSL functions <code>packUnorm4x8</code> and the <code>unpackUnorm4x8</code> instead of rolling my own, so it's ever so slightly simpler.
 
 Anyway, I've verified that this <del>(mostly)</del> works on a GTX 480, <del>I still get a small bit of flickering on a few voxels</del>. Flickering has been fixed, and also works on a GTX Titan.
 
-[sourcecode language="cpp"]
+~~~cpp
 void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, ivec3 coord, vec3 nextVec3)
 {
 	uint nextUint = packUnorm4x8(vec4(nextVec3,1.0f/255.0f));
@@ -38,7 +40,7 @@ void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, iv
 		nextUint = packUnorm4x8(vec4(average, (count+1)/255.0f));
 	}
 }
-[/sourcecode]
+~~~
 
 This works by using the <code>imageAtomicCompSwap</code> function to effectively implement a <a href="http://en.wikipedia.org/wiki/Spinlock">spinlock</a>, which "spins" until all threads trying to access the voxel are done.
 
@@ -46,5 +48,5 @@ Apparently, the compiler can be quite picky about how things like this are writt
 
 <strong>Edit/Update: </strong>So I had a few mistakes in my previous implementation which weren't very noticeable in a sparsely tessellated model (like the Dwarf), but became much more noticeable as triangle density increased (like in the curtains and plants of the Sponza model).  Anyway, it turned out I hadn't considered the effects of the <code>packUnorm4x8</code> and <code>unpackUnorm4x8</code> functions correctly. The <code>packUnorm4x8</code> function clamps input components from 0 to 1, so the count updates were getting discarded, and obviously the average was coming out wrong.  Anyway, the solution was to divide by 255 when "packing" the count, and multiply by 255 when unpacking.  This method should work with up to 255 threads attempting to write to the same voxel location.
 
-<strong>References</strong>
-[<a name="CG"></a>Crassin &amp; Greene] Octree-Based Sparse Voxelization Using the GPU Hardware Rasterizer <a href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf">http://www.seas.upenn.edu/%7Epcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf</a>
+### References
+[<a name="CG"></a>Crassin & Greene] Octree-Based Sparse Voxelization Using the GPU Hardware Rasterizer <a href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf">http://www.seas.upenn.edu/%7Epcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf</a>

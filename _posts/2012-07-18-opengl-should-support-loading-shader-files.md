@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OpenGL should support loading shader files
+title: "OpenGL should support loading shader files"
 date: 2012-07-18 15:00
 author: randallr
 comments: true
@@ -23,4 +23,4 @@ If its not that hard for me to hack into real <code>#include</code> support I i
 
 So, instead of <a href="http://www.opengl.org/sdk/docs/man/xhtml/glShaderSource.xml"><code>glShaderSource</code></a>, I propose <code>glShaderFile</code>, which instead of taking in a string of shader source, it takes in a string of a shader file name, from which it extracts the directory such that the shader compiler knows where to look every time <code>#include</code> is used.  Optionally, it could take another string explicitly defining the shader include directory.  Alternately, another version of <a href="http://www.opengl.org/sdk/docs/man/xhtml/glShaderSource.xml"><code>glShaderSource</code></a>, say <code>glShaderSourceDir</code> could take a shader string and have a parameter to explicitly define the shader include directory.
 
-Anyway, that's my rant.  Its not a huge deal, but I actually think this simple addition would have a fairly large impact on the usability of glsl shaders.
+Anyway, that's my rant. Its not a huge deal, but I actually think this simple addition would have a fairly large impact on the usability of GLSL shaders.
