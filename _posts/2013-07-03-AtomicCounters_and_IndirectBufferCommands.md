@@ -6,7 +6,9 @@ comments: true
 tags: [OpenGL, GLSL]
 ---
 
-I’ve made use of Atomic Counters and Indirect Buffers in the past, but always in the most straightforward manner. I.e. create a dedicated buffer for the atomic counter, and another for the Indirect Command Buffer, increment the counter in a shader then write the Atomic Counter value into the Indirect Command Buffer using the [Image API](https://www.khronos.org/registry/OpenGL/extensions/ARB/ARB_shader_image_load_store.txt), ending up with a shader that looks something like below.
+[imageAPI]: https://www.khronos.org/registry/OpenGL/extensions/ARB/ARB_shader_image_load_store.txt
+
+I’ve made use of Atomic Counters and Indirect Buffers in the past, but always in the most straightforward manner. I.e. create a dedicated buffer for the atomic counter, and another for the Indirect Command Buffer, increment the counter in a shader then write the Atomic Counter value into the Indirect Command Buffer using the [Image API][imageAPI]), ending up with a shader that looks something like below.
 
 ~~~glsl
 #version 420

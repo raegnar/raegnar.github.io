@@ -24,24 +24,24 @@ author: Randall Rauwendaal              # change to your full name
 
 avatar: /assets/img/profile.jpg   # support internet resources
 
-github:
-  username: github_username             # change to your github username
+# github:
+#   username: github_username             # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+# twitter:
+#   username: twitter_username            # change to your twitter username
 
 social:
   name: Randall Rauwendaal              # it will shows as the copyright owner in Footer
   email: randall@rauwendaal.net         # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    # - https://twitter.com/username      # change to your twitter homepage
+    # - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: google_meta_tag_verification # change to your verification string
+# google_site_verification: google_meta_tag_verification # change to your verification string
 
 #--------------------------
 
@@ -200,3 +200,6 @@ sitemap_exclude:  # Sitemap will exclude the following items.
     - sitemap.xml
     - robots.txt
     - redirects.json
+
+plugins:
+  - jekyll-spaceship

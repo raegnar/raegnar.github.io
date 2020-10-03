@@ -6,7 +6,7 @@ comments: true
 tags: [GLSL]
 ---
 
-So I fixed some issues I had in my previous implementation of <code>imageAtomicAverageRGBA8</code>, see the [previous post](/glslrunningaverage/) for an explanation of what I got wrong. Reposting the corrected code here, and sorry to anyone who was trying to use the broken version.
+So I fixed some issues I had in my previous implementation of `imageAtomicAverageRGBA8`, see the [previous post](/glslrunningaverage/) for an explanation of what I got wrong. Reposting the corrected code here, and sorry to anyone who was trying to use the broken version.
 
 ~~~glsl
 void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, ivec3 coord, vec3 nextVec3)
@@ -40,7 +40,7 @@ void imageAtomicAverageRGBA8(layout(r32ui) coherent volatile uimage3D voxels, iv
 
 Anyway, original credit for this technique should go to Cyril Crassin, whose implementation in [<a href="#CG2">Crassin & Greene</a>] deftly avoided the mistakes I made by implementing his own pack/unpack functions. Still not sure why his implementation doesn't work for me though. 
 
-<strong>Note:</strong> I tried to debug these in the Nsight shader debugger and got the message "Not a debuggable shader", so either it doesn't support atomics (unverified), or these "spinlock" type shaders are too clever for the debugger somehow (for now).
+**Note:** I tried to debug these in the Nsight shader debugger and got the message "Not a debuggable shader", so either it doesn't support atomics (unverified), or these "spinlock" type shaders are too clever for the debugger somehow (for now).
 
 ### References
 [<a name="CG2"></a>Crassin & Greene] Octree-Based Sparse Voxelization Using the GPU Hardware Rasterizer <a href="http://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf">http://www.seas.upenn.edu/%7Epcozzi/OpenGLInsights/OpenGLInsights-SparseVoxelization.pdf</a>

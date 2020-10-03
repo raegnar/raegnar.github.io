@@ -7,7 +7,6 @@
 
 -
   name: Home
-  icon: "fas fa-home"
 # -
 #   name: Categories
 #   icon: "fas fa-stream"
@@ -15,16 +14,21 @@
 #   url: categories
 -
   name: "Tags"
-  icon: "fas fa-tags"
   path: tabs
   url: tags
+-
+  name: "Publications"
+  path: tabs
+  url: publications
 -
   name: "Archives"
   path: tabs
   url: archives
-  icon: "fas fa-archive"
+-
+  name: "Resume"
+  path: tabs
+  url: resume
 -
   name: "About"
-  icon: "fas fa-info"
   path: tabs
   url: about

@@ -5,7 +5,9 @@ comments: true
 tags: [OpenGL]
 ---
 
-This one has been on the backlog for ages now.  Anyway, this is an OpenGL adaptation of a clever trick that's been around for quite awhile and described in DirectX terms by Cort Stratton ([@postgoodism](http://www.twitter.com/postgoodism)) in the "[An interesting vertex shader trick](https://web.archive.org/web/20140719063725/http://www.altdev.co/2011/08/08/interesting-vertex-shader-trick/)" on [#AltDevBlogADay](http://www.altdev.co/).
+[vsTrick]: https://web.archive.org/web/20140719063725/http://www.altdev.co/2011/08/08/interesting-vertex-shader-trick/
+
+This one has been on the backlog for ages now.  Anyway, this is an OpenGL adaptation of a clever trick that's been around for quite awhile and described in DirectX terms by Cort Stratton ([@postgoodism](http://www.twitter.com/postgoodism)) in the "[An interesting vertex shader trick][vsTrick]" on [#AltDevBlogADay](http://www.altdev.co/).
 
 It describes a method for rendering a triangle that covers the screen with no buffer inputs.  All vertex and texture coordinate information are generated solely from the vertexID.  Unfortunately, because OpenGL uses a right-handed coordinate system while DirectX uses a left-handed coordinate system the same vertexID transformation used for DirectX won't work in OpenGL.  Basically, we need to reverse the order of the triangle vertices so that they are traversed counter-clockwise as opposed to clockwise in the original implementation. So, after a bit of experimentation I came up with the following adaptation for OpenGL:
 
