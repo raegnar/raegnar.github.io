@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OpenGL 4.3 released
+title: "OpenGL 4.3 released"
 date: 2012-08-06 11:44
 comments: true
 tags: [OpenGL]

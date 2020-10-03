@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Layered Reflective Shadow Maps for Voxel-based Indirect Illumination
+title: "Layered Reflective Shadow Maps for Voxel-based Indirect Illumination"
 tags: [Research]
 comments: true
 ---

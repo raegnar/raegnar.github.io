@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Writing to 3-components buffers using the image API in OpenGL
+title: "Writing to 3-components buffers using the image API in OpenGL"
 date: 2012-08-27 14:07
 comments: true
 tags: [GLSL, OpenGL]

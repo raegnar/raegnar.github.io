@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Fixed imageAtomicAverageRGBA8
+title: "Fixed imageAtomicAverageRGBA8"
 date: 2013-05-02 10:27
 comments: true
 tags: [GLSL]

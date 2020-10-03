@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hybrid Computational Voxelization Using the Graphics Pipeline
+title: "Hybrid Computational Voxelization Using the Graphics Pipeline"
 date: 2013-03-18 10:58
 comments: true
 tags: [Research]

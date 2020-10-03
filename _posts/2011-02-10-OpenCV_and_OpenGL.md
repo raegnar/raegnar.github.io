@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OpenCV and OpenCL
+title: "OpenCV and OpenCL"
 date: 2011-02-10 2:13
 comments: true
 tags: [OpenGL, OpenCV]

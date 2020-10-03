@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Writing to 3D OpenGL textures in CUDA 4.1 with 3D surface writes
+title: "Writing to 3D OpenGL textures in CUDA 4.1 with 3D surface writes"
 date: 2011-12-02 12:31
 comments: true
 tags: [CUDA, OpenGL]
